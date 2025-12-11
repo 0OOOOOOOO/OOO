@@ -1,0 +1,33 @@
+name: |-
+  LeicaCam
+desc: |-
+  LeicaCam
+icon: |-
+  https://github.com/Toperlock/Quantumult/raw/main/icon/Doraemon/Doraemon-1018.png
+
+http:
+
+  mitm:
+    - "api.revenuecat.com"
+    - "api.rc-backup.com"
+
+  script:
+    - match: ^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+      name: "LeicaCam_2"
+      type: response
+      require-body: true
+      max-size: -1
+      timeout: 60
+
+    - match: ^https:\/\/api\.(revenuecat|rc-backup)\.com\/.+\/(receipts|subscribers)
+      name: "O_3"
+      type: request
+      timeout: 60
+
+script-providers:
+  "LeicaCam_2":
+    url: https://raw.githubusercontent.com/0OOOOOOOO/OOO/refs/heads/main/LeicaCam.js
+    interval: 86400
+  "O_3":
+    url: https://raw.githubusercontent.com/0OOOOOOOO/OOO/refs/heads/main/O.js
+    interval: 86400
